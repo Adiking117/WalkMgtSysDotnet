@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WalkManagementSystem.Data;
+using WalkManagementSystem.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,11 @@ builder.Services.AddDbContext<WalksDBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("WalkMS"));
 });
+
+builder.Services.AddScoped<IRegionRepository, RegionRepository>(); 
+builder.Services.AddScoped<IWalkRepository, WalkRepository>();
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 var app = builder.Build();
 

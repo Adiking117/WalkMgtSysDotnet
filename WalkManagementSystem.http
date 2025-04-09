@@ -1,0 +1,6 @@
+@WalkManagementSystem_HostAddress = http://localhost:5234
+
+GET {{WalkManagementSystem_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
